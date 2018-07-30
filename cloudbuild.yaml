@@ -4,5 +4,5 @@ steps:
     args: ["install", "."]
     id: "docker-build"
   - name: "gcr.io/cloud-builders/docker"
-    args: ["build", "-t", "gcr.io/${PROJECT_ID}/helloworld:${TAG_NAME}", "."]
+    args: ["build", "-t", "gcr.io/${PROJECT_ID}/hello-world:${TAG_NAME}", "."]
     id: "docker-build"
