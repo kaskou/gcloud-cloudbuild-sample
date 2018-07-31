@@ -11,18 +11,18 @@ steps:
   - 'CLOUDSDK_CONTAINER_CLUSTER=test'
   - 'KUBECONFIG=/kube/config'
   args:
-      - '-c'
-      - |
-        CLUSTER=$$(gcloud config get-value container/cluster)
-        PROJECT=$$(gcloud config get-value core/project)
-        ZONE=$$(gcloud config get-value compute/zone)
+  - '-c'
+  - |
+    CLUSTER=$$(gcloud config get-value container/cluster)
+    PROJECT=$$(gcloud config get-value core/project)
+    ZONE=$$(gcloud config get-value compute/zone)
       
-        gcloud container clusters get-credentials "$${CLUSTER}" \
-          --project "$${PROJECT}" \
-          --zone "$${ZONE}"
-    volumes:
-      - name: 'kube'
-        path: /kube
+    gcloud container clusters get-credentials "$${CLUSTER}" \
+      --project "$${PROJECT}" \
+      --zone "$${ZONE}"
+   volumes:
+     - name: 'kube'
+       path: /kube
 - name: 'gcr.io/cloud-builders/kubectl'
   args:
   - 'set'
