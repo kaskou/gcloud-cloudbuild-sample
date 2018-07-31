@@ -6,13 +6,12 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ["push", "gcr.io/movies-automation/hello-world:$REVISION_ID"]
 - name: 'gcr.io/cloud-builders/kubectl'
-    steps:
-    args:
-    - 'set'
-    - 'image'
-    - 'deployment/my-deployment'
-    - 'my-container=gcr.io/movies-automation/hello-world:$REVISION_ID'
-    env:
-      - 'CLOUDSDK_COMPUTE_ZONE=australia-southeast1-a'
-      - 'CLOUDSDK_CONTAINER_CLUSTER=test'
-      - 'KUBECONFIG=/kube/config'
+  args:
+  - 'set'
+  - 'image'
+  - 'deployment/my-deployment'
+  - 'my-container=gcr.io/movies-automation/hello-world:$REVISION_ID'
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=australia-southeast1-a'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=test'
+  - 'KUBECONFIG=/kube/config'
