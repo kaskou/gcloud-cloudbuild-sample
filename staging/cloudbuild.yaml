@@ -6,22 +6,6 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ["push", "gcr.io/movies-automation/hello-world:$REVISION_ID"]
 - name: 'gcr.io/cloud-builders/kubectl'
-  env:
-  - 'CLOUDSDK_COMPUTE_ZONE=australia-southeast1-a'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=flint-test'
-  - 'KUBECONFIG=/kube/config'
-  entrypoint: 'sh'
-  args:
-  - '-c'
-  - |
-    CLUSTER=$$(gcloud config get-value container/cluster)
-    PROJECT=$$(gcloud config get-value core/project)
-    ZONE=$$(gcloud config get-value compute/zone)
-      
-    gcloud container clusters get-credentials "$${CLUSTER}" \
-      --project "$${PROJECT}" \
-      --zone "$${ZONE}"
-- name: 'gcr.io/cloud-builders/kubectl'
   args:
   - 'set'
   - 'image'
