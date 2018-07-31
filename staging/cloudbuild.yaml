@@ -9,8 +9,8 @@ steps:
   args:
   - 'set'
   - 'image'
-  - 'deployment/my-deployment'
-  - 'my-container=gcr.io/movies-automation/hello-world:$REVISION_ID'
+  - 'deployment/hello-world'
+  - 'hello-world=gcr.io/movies-automation/hello-world:$REVISION_ID'
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=australia-southeast1-a'
   - 'CLOUDSDK_CONTAINER_CLUSTER=flint-test'
